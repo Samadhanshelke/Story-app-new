@@ -1,5 +1,4 @@
-
-import { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 const reels = [
@@ -13,7 +12,6 @@ const App = () => {
   const startY = useRef(0);
   const endY = useRef(0);
   const isDragging = useRef(false);
-  const reelRefs = useRef([]);
 
   const handleStart = (y) => {
     startY.current = y;
@@ -28,16 +26,10 @@ const App = () => {
 
   const handleEnd = () => {
     if (isDragging.current) {
-      const currentReel = reelRefs.current[index];
-      if (
-        currentReel &&
-        (currentReel.scrollHeight - currentReel.scrollTop === currentReel.clientHeight || startY.current < endY.current)
-      ) {
-        if (startY.current - endY.current > 50) {
-          setIndex((prevIndex) => (prevIndex < reels.length - 1 ? prevIndex + 1 : prevIndex));
-        } else if (startY.current - endY.current < -50) {
-          setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-        }
+      if (startY.current - endY.current > 50) {
+        setIndex((prevIndex) => (prevIndex < reels.length - 1 ? prevIndex + 1 : prevIndex));
+      } else if (startY.current - endY.current < -50) {
+        setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
       }
     }
     isDragging.current = false;
@@ -59,12 +51,11 @@ const App = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="h-[100vh] overflow-hidden">
+      className="h-[100vh] ">
       {reels.map((item, idx) => (
         <div
           key={item}
-          ref={(el) => (reelRefs.current[idx] = el)}
-          className={`h-[100vh] border-2 border-red-600 overflow-auto ${idx === index ? 'block' : 'hidden'}`}>
+          className={`h-[100vh] border-2 border-red-600 ${idx === index ? 'block' : 'hidden'}`}>
           <span className='text-6xl'>{item}</span>
         </div>
       ))}
