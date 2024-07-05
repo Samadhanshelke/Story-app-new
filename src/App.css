@@ -1,0 +1,7 @@
+.reel-container {
+  @apply w-full h-screen flex items-center justify-center bg-gray-100;
+}
+
+.reel-content {
+  @apply text-center text-2xl font-bold;
+}
