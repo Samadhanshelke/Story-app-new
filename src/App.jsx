@@ -9,37 +9,48 @@ const reels = [
 
 const App = () => {
   const [index, setIndex] = useState(0);
-  const mouseStartY = useRef(0);
-  const mouseEndY = useRef(0);
+  const startY = useRef(0);
+  const endY = useRef(0);
   const isDragging = useRef(false);
 
-  const handleMouseDown = (e) => {
-    mouseStartY.current = e.clientY;
+  const handleStart = (y) => {
+    startY.current = y;
     isDragging.current = true;
   };
 
-  const handleMouseMove = (e) => {
+  const handleMove = (y) => {
     if (isDragging.current) {
-      mouseEndY.current = e.clientY;
+      endY.current = y;
     }
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     if (isDragging.current) {
-      if (mouseStartY.current - mouseEndY.current > 50) {
+      if (startY.current - endY.current > 50) {
         setIndex((prevIndex) => (prevIndex < reels.length - 1 ? prevIndex + 1 : prevIndex));
-      } else if (mouseStartY.current - mouseEndY.current < -50) {
+      } else if (startY.current - endY.current < -50) {
         setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
       }
     }
     isDragging.current = false;
   };
 
+  const handleMouseDown = (e) => handleStart(e.clientY);
+  const handleMouseMove = (e) => handleMove(e.clientY);
+  const handleMouseUp = handleEnd;
+
+  const handleTouchStart = (e) => handleStart(e.touches[0].clientY);
+  const handleTouchMove = (e) => handleMove(e.touches[0].clientY);
+  const handleTouchEnd = handleEnd;
+
   return (
     <div
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       className="h-[100vh] ">
       {reels.map((item, idx) => (
         <div
@@ -53,4 +64,3 @@ const App = () => {
 };
 
 export default App;
-
