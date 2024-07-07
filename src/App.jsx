@@ -84,6 +84,9 @@ const App = () => {
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
+            onTouchMove={handleMouseMove}
+            onTouchStart={handleMouseDown}
+            onTouchEnd={handleMouseUp}
             className={` h-full text-6xl overflow-auto select-none  ${index === i ? "flex" : "hidden"}`}
                
           >
