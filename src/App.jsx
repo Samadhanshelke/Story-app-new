@@ -18,12 +18,7 @@ const App = () => {
     ReelsRef.current = ReelsRef.current.slice(0, reels.length);
   }, []);
 
-  const handleMouseMove = (e) => {
-    const y = e.clientY;
- 
-   
-
-
+  const handleMove = (y) => {
     if (y < previousYPosition.current) {
       direction.current = "up";
     } else if (y > previousYPosition.current) {
@@ -32,47 +27,59 @@ const App = () => {
     previousYPosition.current = y;
   };
 
+  const handleMouseMove = (e) => {
+    handleMove(e.clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    handleMove(e.touches[0].clientY);
+  };
+
   const handleMouseDown = (e) => {
     const y = e.clientY;
     startYPosition.current = y;
     previousYPosition.current = y;
   };
 
+  const handleTouchStart = (e) => {
+    const y = e.touches[0].clientY;
+    startYPosition.current = y;
+    previousYPosition.current = y;
+  };
+
+  const resetScroll = () => {
+    const reel = ReelsRef.current[index];
+    if (reel) {
+      reel.scrollTop = 0;
+    }
+  };
+
   const getDirection = () => {
     const reel = ReelsRef.current[index];
-    if (ReelsRef.current) {
+    if (reel) {
       const hasScrollbar = reel.scrollHeight > reel.clientHeight;
-      // const hasScrollbar = false;
       const currentScrollPosition = reel.scrollTop;
       const scrollBottom = reel.scrollHeight - reel.clientHeight;
 
-    console.log('scrollTop',currentScrollPosition,scrollBottom)
-
-     const resetScroll = ()=>{
-      if (reel) {
-        reel.scrollTop = 0; 
-      }
-     }
       if (direction.current === "up") {
         if (hasScrollbar) {
           if (currentScrollPosition >= scrollBottom - 5) {
             setIndex((prevIndex) => (prevIndex < reels.length - 1 ? prevIndex + 1 : prevIndex));
-            resetScroll()
+            resetScroll();
           }
         } else {
           setIndex((prevIndex) => (prevIndex < reels.length - 1 ? prevIndex + 1 : prevIndex));
-          resetScroll()
+          resetScroll();
         }
       } else if (direction.current === "down") {
         setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-        resetScroll()
+        resetScroll();
       }
     }
   };
 
-
-
   const handleMouseUp = getDirection;
+  const handleTouchEnd = getDirection;
 
   return (
     <div className="h-[100vh]">
@@ -84,16 +91,12 @@ const App = () => {
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
-            onTouchMove={handleMouseMove}
-            onTouchStart={handleMouseDown}
-            onTouchEnd={handleMouseUp}
-            className={` h-full text-6xl overflow-auto select-none  ${index === i ? "flex" : "hidden"}`}
-               
+            onTouchMove={handleTouchMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className={`h-full text-6xl overflow-auto select-none ${index === i ? "flex" : "hidden"}`}
           >
-          <p>
-
-            {item}
-          </p>
+            <p>{item}</p>
           </div>
         );
       })}
