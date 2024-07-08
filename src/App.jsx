@@ -37,13 +37,17 @@ const reels = [
 const App = () => {
   const [index, setIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
+  const [drag, setDrag] = useState(false);
   const startYPosition = useRef(0);
   const ReelsRef = useRef([]);
   const containerRef = useRef(null);
 
   const handleMove = (y) => {
     const offset = y - startYPosition.current;
-    setDragOffset(offset);
+   
+      setDragOffset(offset);
+
+    
   };
 
   const handleMouseMove = (e) => {
@@ -84,17 +88,19 @@ const App = () => {
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     const currentScrollPosition = reel.scrollTop;
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
-    console.log(hasScrollbar, currentScrollPosition, scrollBottom);
-
-    if (dragOffset > 100 && currentScrollPosition === 0) {
+      if(currentScrollPosition <= 0 || currentScrollPosition >= scrollBottom - 5){
+        setDrag(true)
+      }
+    if (dragOffset > 200 && currentScrollPosition <= 0) {
       setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
       resetScroll();
-    } else if (dragOffset < -100 && currentScrollPosition >= scrollBottom - 1) {
+    } else if (dragOffset < -200 && currentScrollPosition >= scrollBottom - 5) {
       setIndex((prevIndex) => Math.min(prevIndex + 1, reels.length - 1));
       resetScroll();
     }
     setDragOffset(0);
   };
+  
 
   useEffect(() => {
     const container = containerRef.current;
@@ -124,7 +130,7 @@ const App = () => {
           ref={(el) => (ReelsRef.current[i] = el)}
           className="flex flex-col overflow-scroll reel border-2 border-red-700"
           style={{
-            transform: `translateY(calc(${(i - index) * 100}% + ${dragOffset}px))`,
+            transform: `translateY(calc(${(i - index) * 100}% + ${drag ? dragOffset :0}px))`,
             zIndex: reels.length - i,
           }}
         >
