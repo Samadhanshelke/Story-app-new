@@ -34,7 +34,6 @@ const reels = [
   }
 ];
 
-const SWIPE_THRESHOLD = 50;
 
 const App = () => {
   const [index, setIndex] = useState(0);
@@ -57,10 +56,14 @@ const App = () => {
   };
 
   const handleMouseMove = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     handleMove(e.clientY);
   };
 
   const handleTouchMove = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     handleMove(e.touches[0].clientY);
   };
 
@@ -83,10 +86,12 @@ const App = () => {
     }
   };
 
-  const getDirection = () => {
-    const yDelta = Math.abs(previousYPosition.current - startYPosition.current);
-
-    if (yDelta > SWIPE_THRESHOLD) {
+  const getDirection = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const change = Math.abs(previousYPosition.current - startYPosition.current);
+     console.log("checking",previousYPosition.current,startYPosition.current)
+    if (change > 50) {
       const reel = ReelsRef.current[index];
       if (reel) {
         const hasScrollbar = reel.scrollHeight > reel.clientHeight;
