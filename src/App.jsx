@@ -88,7 +88,7 @@ const App = () => {
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     const currentScrollPosition = reel.scrollTop;
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
-      if(currentScrollPosition <= 0 || currentScrollPosition >= scrollBottom - 5){
+      if( currentScrollPosition <= 0){
         setDrag(true)
       }
     if (dragOffset > 200 && currentScrollPosition <= 0) {
