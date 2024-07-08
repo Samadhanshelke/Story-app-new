@@ -36,11 +36,12 @@
 .reel {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   transition: transform 0.3s ease-in-out;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  overflow: scroll;
 }
 
 

@@ -1,12 +1,39 @@
-import React, { useState, useRef } from "react";
+import  { useState, useRef } from "react";
 import "./App.css";
 
 const reels = [
-  { id: 1, title: "Reel 1", description: "Description for Reel 1",img:"https://imgs.search.brave.com/b125XPj0IJ95T1gKRAHX5zA7hGyi7dJ96p0VKcYyGGY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dHdvLXRvbmUtaW5r/LWNsb3VkLmpwZz93/aWR0aD0xMDAwJmZv/cm1hdD1wanBnJmV4/aWY9MCZpcHRjPTA" },
-  { id: 2, title: "Reel 2", description: "Description for Reel 2",img:"https://imgs.search.brave.com/Y2rH-Z9a2_btluX3LhROUI7M7jGi_vhClrX3FnB4yVA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dGFubmVkLXNhbmQt/ZHVuZXMtc3Vycm91/bmRlZC1hbi1vcGVu/LXJlc2Vydm9pci5q/cGc_d2lkdGg9MTAw/MCZmb3JtYXQ9cGpw/ZyZleGlmPTAmaXB0/Yz0w" },
-  { id: 3, title: "Reel 3", description: "Description for Reel 3",img:"https://imgs.search.brave.com/Y2rH-Z9a2_btluX3LhROUI7M7jGi_vhClrX3FnB4yVA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dGFubmVkLXNhbmQt/ZHVuZXMtc3Vycm91/bmRlZC1hbi1vcGVu/LXJlc2Vydm9pci5q/cGc_d2lkdGg9MTAw/MCZmb3JtYXQ9cGpw/ZyZleGlmPTAmaXB0/Yz0w" },
-  { id: 4, title: "Reel 4", description: "Description for Reel 4",img:"https://imgs.search.brave.com/Y2rH-Z9a2_btluX3LhROUI7M7jGi_vhClrX3FnB4yVA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dGFubmVkLXNhbmQt/ZHVuZXMtc3Vycm91/bmRlZC1hbi1vcGVu/LXJlc2Vydm9pci5q/cGc_d2lkdGg9MTAw/MCZmb3JtYXQ9cGpw/ZyZleGlmPTAmaXB0/Yz0w" },
+  {
+    id: 1,
+    title: "Reel Content 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
+  },
+  {
+    id: 2,
+    title: "Reel Content 2",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam erat volutpat. Maecenas eget anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja."
+  },
+  {
+    id: 3,
+    title: "Reel Content 3",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
+  },
+  {
+    id: 4,
+    title: "Reel Content 4",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam erat volutpat. Maecenas eget anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja."
+  },
+  {
+    id: 5,
+    title: "Reel Content 5",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
+  }
 ];
+
 
 const App = () => {
   const [index, setIndex] = useState(0);
@@ -66,13 +93,14 @@ const App = () => {
       {reels.map((item, i) => (
         <div
           key={item.id}
-          className="reel border-2 border-red-700"
+          className="flex flex-col overflow-scroll reel border-2 border-red-700"
           style={{
             transform: `translateY(calc(${(i - index) * 100}% + ${dragOffset}px))`,
             zIndex: reels.length - i,
           }}
         >
-          <img src={item.img} className="bg-contain h-full"/>
+           <h1>{item.title}</h1>
+          <span>{item.description}</span>
         </div>
       ))}
     </div>
