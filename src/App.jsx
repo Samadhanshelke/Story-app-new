@@ -83,18 +83,19 @@ const App = () => {
     finalizeSwipe();
   };
 
+
   const finalizeSwipe = () => {
     const reel = ReelsRef.current[index];
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     const currentScrollPosition = reel.scrollTop;
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
-      if( currentScrollPosition <= 0){
-        setDrag(true)
-      }
+     
     if (dragOffset > 200 && currentScrollPosition <= 0) {
       setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
       resetScroll();
     } else if (dragOffset < -200 && currentScrollPosition >= scrollBottom - 5) {
+     
+    
       setIndex((prevIndex) => Math.min(prevIndex + 1, reels.length - 1));
       resetScroll();
     }
@@ -130,11 +131,13 @@ const App = () => {
           ref={(el) => (ReelsRef.current[i] = el)}
           className="flex flex-col overflow-scroll reel border-2 border-red-700"
           style={{
-            transform: `translateY(calc(${(i - index) * 100}% + ${drag ? dragOffset :0}px))`,
-            zIndex: reels.length - i,
-          }}
+  transform: `translateY(calc(${(i - index) * 100}% + ${dragOffset}px))`,
+  zIndex: reels.length - Math.abs(i - index)
+}}
+
+
         >
-          <h1 className="text-3xl font-bold border-b-2 border-black">{item.title}</h1>
+          <h1 className="text-3xl font-bold border-b-2 border-red-200">{item.title}</h1>
           <span>{item.description}</span>
         </div>
       ))}
