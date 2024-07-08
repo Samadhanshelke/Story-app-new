@@ -1,4 +1,4 @@
-import  { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 
 const reels = [
@@ -33,13 +33,12 @@ const reels = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
   }
 ];
-
-
 const App = () => {
   const [index, setIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const startYPosition = useRef(0);
   const ReelsRef = useRef([]);
+  
   const handleMove = (y) => {
     const offset = y - startYPosition.current;
     setDragOffset(offset);
@@ -50,6 +49,7 @@ const App = () => {
   };
 
   const handleTouchMove = (e) => {
+   
     handleMove(e.touches[0].clientY);
   };
 
@@ -58,16 +58,17 @@ const App = () => {
     startYPosition.current = y;
   };
 
+  const handleTouchStart = (e) => {
+ 
+    const y = e.touches[0].clientY;
+    startYPosition.current = y;
+  };
+
   const resetScroll = () => {
     const reel = ReelsRef.current[index];
     if (reel) {
       reel.scrollTop = 0;
     }
-  };
-
-  const handleTouchStart = (e) => {
-    const y = e.touches[0].clientY;
-    startYPosition.current = y;
   };
 
   const handleMouseUp = () => {
@@ -83,14 +84,14 @@ const App = () => {
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     const currentScrollPosition = reel.scrollTop;
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
-    console.log(hasScrollbar,currentScrollPosition,scrollBottom)
-    if (dragOffset > 100) {
-     
+    console.log(hasScrollbar, currentScrollPosition, scrollBottom);
+
+    if (dragOffset > 100 && currentScrollPosition === 0) {
       setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-      resetScroll()
-    } else if (dragOffset < -100) {
+      resetScroll();
+    } else if (dragOffset < -100 && currentScrollPosition >= scrollBottom - 1) {
       setIndex((prevIndex) => Math.min(prevIndex + 1, reels.length - 1));
-      resetScroll()
+      resetScroll();
     }
     setDragOffset(0);
   };
@@ -115,7 +116,7 @@ const App = () => {
             zIndex: reels.length - i,
           }}
         >
-           <h1>{item.title}</h1>
+          <h1>{item.title}</h1>
           <span>{item.description}</span>
         </div>
       ))}

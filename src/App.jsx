@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 const reels = [
@@ -33,12 +33,14 @@ const reels = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
   }
 ];
+
 const App = () => {
   const [index, setIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const startYPosition = useRef(0);
   const ReelsRef = useRef([]);
-  
+  const containerRef = useRef(null);
+
   const handleMove = (y) => {
     const offset = y - startYPosition.current;
     setDragOffset(offset);
@@ -94,14 +96,26 @@ const App = () => {
     setDragOffset(0);
   };
 
+  useEffect(() => {
+    const container = containerRef.current;
+    const nonPassiveEventOptions = { passive: false };
+
+    container.addEventListener("touchmove", handleTouchMove, nonPassiveEventOptions);
+    container.addEventListener("touchstart", handleTouchStart, nonPassiveEventOptions);
+
+    return () => {
+      container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("touchstart", handleTouchStart);
+    };
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       className="reel-container"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-      onTouchMove={handleTouchMove}
-      onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {reels.map((item, i) => (
@@ -114,7 +128,7 @@ const App = () => {
             zIndex: reels.length - i,
           }}
         >
-          <h1>{item.title}</h1>
+          <h1 className="text-3xl font-bold border-b-2 border-black">{item.title}</h1>
           <span>{item.description}</span>
         </div>
       ))}

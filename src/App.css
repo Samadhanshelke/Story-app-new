@@ -45,3 +45,6 @@
 }
 
 
+body {
+  overscroll-behavior: contain;
+}
