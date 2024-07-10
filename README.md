@@ -34,20 +34,32 @@ const reels = [
   }
 ];
 
+
 const App = () => {
   const [index, setIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const [drag, setDrag] = useState(false);
+
   const startYPosition = useRef(0);
   const ReelsRef = useRef([]);
   const containerRef = useRef(null);
 
   const handleMove = (y) => {
     const offset = y - startYPosition.current;
+    const reel = ReelsRef.current[index];
    
-      setDragOffset(offset);
+    const currentScrollPosition = reel.scrollTop;
+    const scrollBottom = reel.scrollHeight - reel.clientHeight;
 
-    
+    const hasScrollbar = reel.scrollHeight > reel.clientHeight;
+    console.log(hasScrollbar)
+    // console.log(offset,currentScrollPosition,scrollBottom)
+    if(hasScrollbar){
+      if ((offset < 0 && currentScrollPosition >= scrollBottom-5)  || (offset > 0)){
+        // console.log('rinning')
+        setDragOffset(offset);
+        }
+    }
+
   };
 
   const handleMouseMove = (e) => {
@@ -83,28 +95,23 @@ const App = () => {
     finalizeSwipe();
   };
 
-
   const finalizeSwipe = () => {
     const reel = ReelsRef.current[index];
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     const currentScrollPosition = reel.scrollTop;
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
-      if( currentScrollPosition >= scrollBottom - 5){
-        console.log('first')
-        setDrag(true)
-      }
-    if (dragOffset > 200 && currentScrollPosition <= 0) {
+
+    if (dragOffset > 200 ) {
       setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-      resetScroll();
-    } else if (dragOffset < -200 && currentScrollPosition >= scrollBottom - 5) {
-      setDrag(false)
-      console.log(drag)
+      // console.log(hasScrollbar)
+    } else if (dragOffset < -200 ) {
+
       setIndex((prevIndex) => Math.min(prevIndex + 1, reels.length - 1));
-      resetScroll();
+      // console.log(hasScrollbar)
+     
     }
     setDragOffset(0);
   };
-  
 
   useEffect(() => {
     const container = containerRef.current;
@@ -134,12 +141,11 @@ const App = () => {
           ref={(el) => (ReelsRef.current[i] = el)}
           className="flex flex-col overflow-scroll reel border-2 border-red-700"
           style={{
-  transform: `translateY(calc(${(i - index) * 100}% ${drag ? `+ ${dragOffset}px` : ''}))`,
-  zIndex: reels.length - i
-}}
-
+            transform: `translateY(calc(${(i - index) * 100}% + ${dragOffset}px))`,
+            zIndex: reels.length - Math.abs(i - index)
+          }}
         >
-          <h1 className="text-3xl font-bold border-b-2 border-black">{item.title}</h1>
+          <h1 className="text-3xl font-bold border-b-2 border-red-700">{item.title}</h1>
           <span>{item.description}</span>
         </div>
       ))}

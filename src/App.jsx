@@ -52,13 +52,10 @@ const App = () => {
 
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     console.log(hasScrollbar)
-    // console.log(offset,currentScrollPosition,scrollBottom)
-    if(hasScrollbar){
-      if ((offset < 0 && currentScrollPosition >= scrollBottom-5)  || (offset > 0)){
-        // console.log('rinning')
-        setDragOffset(offset);
-        }
-    }
+    console.log(index)
+    // if(index == 0 && offset > 10) return
+
+    setDragOffset(offset);
 
   };
 
@@ -88,27 +85,36 @@ const App = () => {
   };
 
   const handleMouseUp = () => {
-    finalizeSwipe();
+    handleSwipe();
   };
 
   const handleTouchEnd = () => {
-    finalizeSwipe();
+    handleSwipe();
   };
 
-  const finalizeSwipe = () => {
+  const handleSwipe = () => {
     const reel = ReelsRef.current[index];
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
     const currentScrollPosition = reel.scrollTop;
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
 
-    if (dragOffset > 200 ) {
-      setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-      // console.log(hasScrollbar)
-    } else if (dragOffset < -200 ) {
+    if (dragOffset > 10 ) {
+      if(index == 0){
+        setDragOffset(0)
+        return
+      }
 
-      setIndex((prevIndex) => Math.min(prevIndex + 1, reels.length - 1));
+      setIndex((prevIndex) =>{
+        return prevIndex - 1
+        });
       // console.log(hasScrollbar)
      
+     
+    } else if (dragOffset < -10 ) {
+
+      setIndex((prevIndex) => prevIndex + 1);
+      // console.log(hasScrollbar)
+      
     }
     setDragOffset(0);
   };
@@ -139,7 +145,7 @@ const App = () => {
         <div
           key={item.id}
           ref={(el) => (ReelsRef.current[i] = el)}
-          className="flex flex-col overflow-scroll reel border-2 border-red-700"
+          className="flex flex-col overflow-scroll reel pb-4 border-2 border-red-700"
           style={{
             transform: `translateY(calc(${(i - index) * 100}% + ${dragOffset}px))`,
             zIndex: reels.length - Math.abs(i - index)
