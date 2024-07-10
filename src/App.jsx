@@ -37,7 +37,7 @@ const reels = [
 const App = () => {
   const [index, setIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-
+const [atBottom,setAtBottom] = useState(false)
   const startYPosition = useRef(0);
   const ReelsRef = useRef([]);
   const containerRef = useRef(null);
@@ -53,14 +53,22 @@ const App = () => {
     console.log(hasScrollbar);
     console.log(index);
 
-    if(hasScrollbar ){
+    if(hasScrollbar){
       if(currentScrollPosition > scrollBottom - 1){
         setDragOffset(offset);
+        console.log('running')
+        setAtBottom(true)
+      }else{
+        setDragOffset(0);
+        setAtBottom(false)
+        return
       }
-       return
+    }else{
+      setDragOffset(offset);
+      setAtBottom(false)
+
     }
 
-    setDragOffset(offset);
   };
 
   const handleMouseMove = (e) => {
@@ -69,6 +77,7 @@ const App = () => {
 
   const handleTouchMove = (e) => {
     handleMove(e.touches[0].clientY);
+   
   };
 
   const handleMouseDown = (e) => {
@@ -90,10 +99,12 @@ const App = () => {
 
   const handleMouseUp = () => {
     handleSwipe();
+    setAtBottom(false)
   };
 
   const handleTouchEnd = () => {
     handleSwipe();
+    setAtBottom(false)
   };
 
   const handleSwipe = () => {
@@ -116,17 +127,19 @@ const App = () => {
     else if (dragOffset < -10) {
       if (index === reels.length - 1) {
         setDragOffset(0);
+        setAtBottom(false)
         return;
       }
       console.log(hasScrollbar);
       if (hasScrollbar) {
-        console.log("scrollBottom", scrollBottom);
-        console.log("currentScrollPosition", currentScrollPosition);
+     
         if (currentScrollPosition > scrollBottom - 1) {
           setIndex((prevIndex) => prevIndex + 1);
+          setAtBottom(false)
         }
       } else {
         setIndex((prevIndex) => prevIndex + 1);
+        setAtBottom(false)
       }
     }
     setDragOffset(0);
@@ -151,7 +164,7 @@ const App = () => {
       container.removeEventListener("touchmove", handleTouchMove);
       container.removeEventListener("touchstart", handleTouchStart);
     };
-  }, []);
+  }, [handleTouchMove]);
 
   return (
     <div
@@ -170,11 +183,11 @@ const App = () => {
           style={{
             transform: `translateY(calc(${
               (i - index) * 100
-            }% + ${dragOffset}px))`,
+            }% + ${atBottom === true ? dragOffset : 0}px))`,
             zIndex: reels.length - Math.abs(i - index),
           }}
         >
-          <h1 className="text-3xl font-bold border-b-2 border-red-700">
+          <h1 className="text-3xl font-bold border-b-2 border-blue-700">
             {item.title}
           </h1>
           <span>{item.description}</span>
