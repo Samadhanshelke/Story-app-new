@@ -51,7 +51,10 @@ const App = () => {
     if (hasScrollbar) {
       if (currentScrollPosition > scrollBottom - 1) {
         setDragOffset(offset);
-      } else {
+      } else if(offset > 10 && currentScrollPosition ===0){
+        setDragOffset(offset);
+      }
+      else {
         setDragOffset(0);
       }
     } else {
@@ -100,6 +103,7 @@ const App = () => {
 
     if (dragOffset > 10 && index > 0) {
       setIndex((prevIndex) => prevIndex - 1);
+
     } else if (dragOffset < -10 && index < reels.length - 1) {
       if (!hasScrollbar || currentScrollPosition > scrollBottom - 1) {
         setIndex((prevIndex) => prevIndex + 1);
