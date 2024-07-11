@@ -47,7 +47,8 @@ const App = () => {
     const scrollBottom = reel.scrollHeight - reel.clientHeight;
     const hasScrollbar = reel.scrollHeight > reel.clientHeight;
 
-  
+  //600
+
     if (hasScrollbar) {
       if (currentScrollPosition > scrollBottom - 1) {
         setDragOffset(offset);
@@ -93,24 +94,53 @@ const App = () => {
     handleSwipe();
   };
 
+  // const handleSwipe = () => {
+  //   const reel = ReelsRef.current[index];
+  //   const hasScrollbar = reel.scrollHeight > reel.clientHeight;
+  //   const currentScrollPosition = reel.scrollTop;
+  //   const scrollBottom = reel.scrollHeight - reel.clientHeight;
+
+  //   const containerHeight = window.innerHeight;
+  //   const visibleRatio = dragOffset / containerHeight;
+  //   // console.log(window.innerHeight)
+  //   console.log(visibleRatio)
+
+  //   if (dragOffset > 10 && index > 0) {
+  //     setIndex((prevIndex) => prevIndex - 1);
+
+  //   } else if (dragOffset < -10 && index < reels.length - 1) {
+  //     if (!hasScrollbar || currentScrollPosition > scrollBottom - 1) {
+  //       setIndex((prevIndex) => prevIndex + 1);
+  //     }
+  //   }
+  //   setDragOffset(0);
+  // };
+
   const handleSwipe = () => {
-    const reel = ReelsRef.current[index];
-    const hasScrollbar = reel.scrollHeight > reel.clientHeight;
-    const currentScrollPosition = reel.scrollTop;
-    const scrollBottom = reel.scrollHeight - reel.clientHeight;
+    const containerHeight = window.innerHeight;
+    const visibleRatio = dragOffset / containerHeight;
 
-   
-
-    if (dragOffset > 10 && index > 0) {
+    if (visibleRatio > 0.5 && index > 0) {
       setIndex((prevIndex) => prevIndex - 1);
+    } else if (visibleRatio < -0.5 && index < reels.length - 1) {
+      setIndex((prevIndex) => prevIndex + 1);
+    } else {
+      // Snap to the closest reel based on visibility
+      const reel = ReelsRef.current[index];
+      const reelHeight = reel.clientHeight;
+      const reelTop = reel.getBoundingClientRect().top;
+      const visiblePercentage = (containerHeight - Math.abs(reelTop)) / reelHeight;
 
-    } else if (dragOffset < -10 && index < reels.length - 1) {
-      if (!hasScrollbar || currentScrollPosition > scrollBottom - 1) {
+      if (visiblePercentage < 0.5 && dragOffset > 0 && index > 0) {
+        setIndex((prevIndex) => prevIndex - 1);
+      } else if (visiblePercentage < 0.5 && dragOffset < 0 && index < reels.length - 1) {
         setIndex((prevIndex) => prevIndex + 1);
       }
     }
+
     setDragOffset(0);
   };
+
 
   useEffect(() => {
     const container = containerRef.current;
@@ -141,7 +171,7 @@ const App = () => {
   return (
     <div
       ref={containerRef}
-      className="reel-container"
+      className="reel-container min-h-screen"
     >
       {reels.map((item, i) => (
         <div
@@ -153,7 +183,7 @@ const App = () => {
             zIndex: reels.length - Math.abs(i - index),
           }}
         >
-          <h1 className="text-3xl font-bold border-b-2 border-pink-700">
+          <h1 className="text-3xl font-bold border-b-2 border-green-700">
             {item.title}
           </h1>
           <span>{item.description}</span>

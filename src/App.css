@@ -28,7 +28,7 @@
 
 .reel-container {
   position: relative;
-  height: 100vh;
+  /* height: screen; */
   width: 100%;
   overflow: hidden;
 }
