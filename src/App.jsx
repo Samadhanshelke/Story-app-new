@@ -6,31 +6,31 @@ const reels = [
     id: 1,
     title: "Reel Content 1",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus etur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut retur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut retur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut rin augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
-  },
-  {
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sit ",
+   },
+    {
     id: 2,
     title: "Reel Content 2",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam erat volutpat. Maecenas eget anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja."
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sit ",
   },
   {
     id: 3,
     title: "Reel Content 3",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sit ",
   },
   {
     id: 4,
     title: "Reel Content 4",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam erat volutpat. Maecenas eget anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja."
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sit ",
   },
   {
     id: 5,
     title: "Reel Content 5",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augueluctus sagittis. Sed tincidunt, magna a ultricies accumsan, mi enim tempornulla, eget ultrices nibh nisl quis mauris. Suspendisse potenti. Vivamusnec commodo augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisaugue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,i.augue. Fusce id eros et nisl porttitor bibendum ut vitaelecNueget nisi dapibus, suscipit erat id, ultrices nisi.Donecvarius, nisl eget ultricies tincidunt, nulla ex autelvelplacerat ante nunc ut diam. Sed vitae finibus ante, Donecvarius, nisl eget ultricies tincidunt, nullautelvelplacerat ante nunc ut diam. Sed vitae finibus ante, non malesuadaneque. Nulla facilisi. Aliquam volutMaecenas anteeu sapien tincidunt efficitur a eget massa. Proin ac nislja.augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, vel placerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,augue. Fusce id eros et nisl porttitor bibendum ut vitaelectus. Nullam eget nisi dapibus, suscipit erat id, ultrices nisi. Donecvarius, nisl eget ultricies tincidunt, nulla ex auctor tellus, velplacerat ante nunc ut diam. Sed vitae finibus ante,"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sitconsectetur adipiscing elit. Lorem ipsum dolor sit ",
   }
 ];
 const App = () => {
@@ -94,52 +94,29 @@ const App = () => {
     handleSwipe();
   };
 
-  // const handleSwipe = () => {
-  //   const reel = ReelsRef.current[index];
-  //   const hasScrollbar = reel.scrollHeight > reel.clientHeight;
-  //   const currentScrollPosition = reel.scrollTop;
-  //   const scrollBottom = reel.scrollHeight - reel.clientHeight;
-
-  //   const containerHeight = window.innerHeight;
-  //   const visibleRatio = dragOffset / containerHeight;
-  //   // console.log(window.innerHeight)
-  //   console.log(visibleRatio)
-
-  //   if (dragOffset > 10 && index > 0) {
-  //     setIndex((prevIndex) => prevIndex - 1);
-
-  //   } else if (dragOffset < -10 && index < reels.length - 1) {
-  //     if (!hasScrollbar || currentScrollPosition > scrollBottom - 1) {
-  //       setIndex((prevIndex) => prevIndex + 1);
-  //     }
-  //   }
-  //   setDragOffset(0);
-  // };
-
   const handleSwipe = () => {
+    const reel = ReelsRef.current[index];
+    const hasScrollbar = reel.scrollHeight > reel.clientHeight;
+    const currentScrollPosition = reel.scrollTop;
+    const scrollBottom = reel.scrollHeight - reel.clientHeight;
+
     const containerHeight = window.innerHeight;
     const visibleRatio = dragOffset / containerHeight;
+    // console.log(window.innerHeight)
+    console.log(visibleRatio)
 
-    if (visibleRatio > 0.5 && index > 0) {
+    if (dragOffset > 10 && index > 0) {
       setIndex((prevIndex) => prevIndex - 1);
-    } else if (visibleRatio < -0.5 && index < reels.length - 1) {
-      setIndex((prevIndex) => prevIndex + 1);
-    } else {
-      // Snap to the closest reel based on visibility
-      const reel = ReelsRef.current[index];
-      const reelHeight = reel.clientHeight;
-      const reelTop = reel.getBoundingClientRect().top;
-      const visiblePercentage = (containerHeight - Math.abs(reelTop)) / reelHeight;
 
-      if (visiblePercentage < 0.5 && dragOffset > 0 && index > 0) {
-        setIndex((prevIndex) => prevIndex - 1);
-      } else if (visiblePercentage < 0.5 && dragOffset < 0 && index < reels.length - 1) {
+    } else if (dragOffset < -10 && index < reels.length - 1) {
+      if (!hasScrollbar || currentScrollPosition > scrollBottom - 1) {
         setIndex((prevIndex) => prevIndex + 1);
       }
     }
-
     setDragOffset(0);
   };
+
+ 
 
 
   useEffect(() => {
@@ -164,7 +141,7 @@ const App = () => {
   }, [handleMouseMove,handleTouchMove]);
 
   useEffect(() => {
-    console.log("index changed:", index);
+    // console.log("index changed:", index);
     resetScroll();
   }, [index]);
 
